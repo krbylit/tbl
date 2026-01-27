@@ -9,9 +9,11 @@
 //! - `input`: Input reading from files, stdin, and pipes
 //! - `parser`: CSV parsing with auto-detection
 //! - `table`: Table rendering with configurable styles
+//! - `parse_utils`: Utilities for parsing CLI arguments with range syntax
 
 pub mod error;
 pub mod input;
+pub mod parse_utils;
 pub mod parser;
 pub mod table;
 
@@ -19,4 +21,5 @@ pub mod table;
 pub use error::TblError;
 pub use input::read_input;
 pub use parser::{parse_csv, ParserConfig, TableData};
-pub use table::{render_table, Alignment, TableColor, TableConfig, TableStyle};
+pub use parse_utils::{parse_condition, Condition, ConditionOperator, ColumnIdentifier};
+pub use table::{render_table, Alignment, ConditionalFormat, TableColor, TableConfig, TableStyle};
