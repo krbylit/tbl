@@ -1,0 +1,9 @@
+Server,Status,CPU,Memory,Uptime
+web-01,Running,45%,62%,30d
+web-02,Running,38%,58%,30d
+db-01,Running,72%,81%,30d
+cache-01,Running,15%,34%,30d
+api-01,Warning,89%,76%,15d
+api-02,Running,52%,68%,30d
+backup-01,Error,5%,12%,2d
+monitor-01,Running,23%,41%,30d

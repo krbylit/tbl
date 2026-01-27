@@ -1,6 +1,0 @@
-product|category|price|stock
-Laptop|Electronics|999.99|42
-Desk Chair|Furniture|249.50|18
-Coffee Maker|Appliances|79.99|156
-Headphones|Electronics|149.99|87
-Bookshelf|Furniture|189.00|23

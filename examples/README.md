@@ -1,86 +1,59 @@
 # Example Data Files
 
-This directory contains sample CSV files for testing and demonstrating `tbl`.
+This directory contains sample CSV and delimited data files for demonstrating `tbl` features.
 
 ## Files
 
-### people.csv
-Standard CSV with headers - employee information with mixed data types.
+### Business & Financial
+
+- **sales.csv** - Quarterly sales data by product category
+- **financial.csv** - Financial statement with revenue, expenses, and net income
+- **pricing.csv** - Product pricing tiers
+
+### People & Organizations
+
+- **grades.csv** - Student grade book with multiple subjects
+- **employees.csv** - Employee roster with departments and salaries
+- **departments.txt** - Department information (pipe-delimited)
+
+### Technical & Operations
+
+- **servers.csv** - Server monitoring data with status indicators
+- **benchmark.csv** - Performance benchmark comparison data
+- **products.csv** - Product catalog with SKUs and inventory
+- **test_results.csv** - Test suite results with scores and pass/fail status (great for conditional formatting demos)
+
+### Data Types
+
+- **simple.csv** - Basic 3-column table for simple demonstrations
+- **matrix.csv** - Numeric matrix without headers
+
+## Usage
+
+See the main README.md for comprehensive examples using these files.
+
+Quick test:
 
 ```bash
-tbl examples/people.csv
+# Basic display
+tbl sales.csv
+
+# With formatting
+tbl sales.csv --row-headers --column-align 2-6:right --style rounded
 ```
 
-### products.txt
-Pipe-delimited file to demonstrate auto-detection of delimiters.
+## Creating Your Own Examples
 
-```bash
-# Auto-detection works automatically
-tbl examples/products.txt
+All files are plain text CSV (or delimited) format. You can:
 
-# Or explicitly specify the delimiter
-tbl examples/products.txt -d '|'
-```
+1. Edit them directly in any text editor
+2. Export from spreadsheet applications (Excel, Google Sheets, etc.)
+3. Generate from scripts or databases
+4. Pipe data directly: `echo "a,b,c" | tbl`
 
-### matrix.csv
-Numeric data without headers - useful for testing `--no-header` flag.
+## File Format Tips
 
-```bash
-# Auto-detection will correctly identify no headers
-tbl examples/matrix.csv
-
-# Or force no headers
-tbl examples/matrix.csv --no-header
-```
-
-## Example Commands
-
-### Different Styles
-
-```bash
-# ASCII style
-tbl examples/people.csv --style ascii
-
-# Markdown format
-tbl examples/people.csv --style markdown
-
-# Rounded corners
-tbl examples/people.csv --style rounded
-```
-
-### Alignment Options
-
-```bash
-# Right-align all columns
-tbl examples/matrix.csv --align right
-
-# Center-align with headers
-tbl examples/people.csv --align center
-```
-
-### With Colors
-
-```bash
-# Green headers
-tbl examples/people.csv --header-color green
-
-# Cyan headers with ASCII style
-tbl examples/products.txt --style ascii --header-color cyan
-```
-
-### Width Constraints
-
-```bash
-# Limit table width
-tbl examples/people.csv --max-width 80
-```
-
-### Pipeline Usage
-
-```bash
-# Filter and display
-cat examples/people.csv | grep "Engineer" | tbl
-
-# Sort by age column
-sort -t',' -k2 -n examples/people.csv | tbl
-```
+- **Headers**: First row is treated as headers (auto-detected)
+- **Delimiters**: Comma (`,`), pipe (`|`), tab, semicolon (auto-detected)
+- **Quotes**: Use quotes for cells containing delimiters: `"value, with comma"`
+- **No headers**: Use `--no-header` flag for data-only files

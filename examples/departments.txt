@@ -1,0 +1,6 @@
+Department|Employees|Budget|Manager
+Engineering|45|$2.5M|Sarah Chen
+Sales|28|$1.8M|Michael Torres
+Marketing|15|$1.2M|Jennifer Liu
+Support|22|$900K|David Park
+HR|8|$600K|Emily Rodriguez
