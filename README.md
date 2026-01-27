@@ -18,7 +18,7 @@ A powerful, scriptable CLI tool for formatting CSV data into beautiful tables. B
 ```bash
 # Clone or navigate to the project directory
 git clone <repository-url>
-cd cli_table_util
+cd tbl
 
 # Build and install
 cargo install --path .
