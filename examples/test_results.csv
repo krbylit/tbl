@@ -1,0 +1,6 @@
+Test,Score,Status,Time
+API Test,95,Pass,1.2s
+DB Connection,45,Fail,2.5s
+Auth Flow,88,Pass,0.8s
+Payment Gateway,30,Fail,3.1s
+Search Feature,92,Pass,1.5s

@@ -1,0 +1,11 @@
+ID,Name,Department,Position,Salary,Start Date,Status
+E001,John Smith,Engineering,Senior Developer,$95000,2020-03-15,Active
+E002,Maria Garcia,Sales,Account Manager,$72000,2021-06-01,Active
+E003,Chen Wei,Engineering,Tech Lead,$110000,2019-01-10,Active
+E004,Sarah Johnson,Marketing,Marketing Director,$98000,2020-08-20,Active
+E005,Ahmed Hassan,Support,Support Specialist,$58000,2022-02-14,Active
+E006,Emily Brown,HR,HR Manager,$85000,2018-11-05,Active
+E007,Raj Patel,Engineering,Junior Developer,$68000,2023-01-09,Active
+E008,Lisa Anderson,Sales,Sales Representative,$65000,2021-09-12,Active
+E009,Carlos Rodriguez,Support,Senior Support,$74000,2020-05-18,Active
+E010,Anna Kowalski,Marketing,Content Writer,$62000,2022-07-22,Active

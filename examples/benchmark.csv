@@ -1,0 +1,8 @@
+Test,Baseline,Current,Change,Status
+API Response Time,125ms,98ms,-27ms,Improved
+Database Query,45ms,52ms,+7ms,Degraded
+Page Load,2.1s,1.8s,-0.3s,Improved
+Memory Usage,512MB,489MB,-23MB,Improved
+CPU Usage,65%,68%,+3%,Stable
+Error Rate,0.5%,0.3%,-0.2%,Improved
+Throughput,1000/s,1150/s,+150/s,Improved
