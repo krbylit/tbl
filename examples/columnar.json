@@ -1,0 +1,6 @@
+{
+  "name": ["Alice", "Bob", "Charlie"],
+  "score": [95, 87, 92],
+  "passed": [true, true, true],
+  "grade": ["A", "B", "A"]
+}
