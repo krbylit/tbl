@@ -1,6 +1,7 @@
 use comfy_table::modifiers::UTF8_ROUND_CORNERS;
 use comfy_table::presets::*;
 use comfy_table::*;
+use comfy_table::TableComponent;
 
 use crate::parser::TableData;
 use crate::parse_utils::Condition;
@@ -339,6 +340,9 @@ pub fn render_table(data: &TableData, config: &TableConfig) -> String {
         let cells = build_data_row(row, row_idx, config, data.headers.as_deref());
         table.add_row(cells);
     }
+
+    // Apply padding to all columns (must be done after rows are added)
+    apply_padding(&mut table, config);
 
     table.to_string()
 }
@@ -790,7 +794,7 @@ fn apply_style(table: &mut Table, style: TableStyle) {
             table.load_preset(ASCII_FULL);
         }
         TableStyle::Dots => {
-            table.load_preset(ASCII_FULL);
+            table.load_preset(ASCII_HORIZONTAL_ONLY);
         }
     }
 }
@@ -805,9 +809,53 @@ fn apply_config(table: &mut Table, config: &TableConfig) {
     // Set content arrangement
     table.set_content_arrangement(ContentArrangement::Dynamic);
 
-    // Note: Some advanced features like custom borders, padding, and separator removal
-    // may require more complex manipulation of the table structure.
-    // For now, we use the preset styles which handle most common cases.
+    // Apply border removal options
+    if config.no_outer_border {
+        // Remove all outer border components
+        table.remove_style(TableComponent::LeftBorder);
+        table.remove_style(TableComponent::RightBorder);
+        table.remove_style(TableComponent::TopBorder);
+        table.remove_style(TableComponent::BottomBorder);
+        table.remove_style(TableComponent::TopLeftCorner);
+        table.remove_style(TableComponent::TopRightCorner);
+        table.remove_style(TableComponent::BottomLeftCorner);
+        table.remove_style(TableComponent::BottomRightCorner);
+        table.remove_style(TableComponent::LeftBorderIntersections);
+        table.remove_style(TableComponent::RightBorderIntersections);
+        table.remove_style(TableComponent::TopBorderIntersections);
+        table.remove_style(TableComponent::BottomBorderIntersections);
+    }
+
+    if config.no_column_border {
+        // Remove vertical column separators
+        table.remove_style(TableComponent::VerticalLines);
+        table.remove_style(TableComponent::MiddleIntersections);
+        table.remove_style(TableComponent::MiddleHeaderIntersections);
+    }
+
+    if config.no_header_separator {
+        // Remove header separator line
+        table.remove_style(TableComponent::HeaderLines);
+        table.remove_style(TableComponent::LeftHeaderIntersection);
+        table.remove_style(TableComponent::MiddleHeaderIntersections);
+        table.remove_style(TableComponent::RightHeaderIntersection);
+    }
+
+    // Apply padding to all columns
+    // Note: We need to ensure all columns exist first by checking column count
+    // The padding will be applied after rows are added
+}
+
+/// Apply padding configuration to table columns
+fn apply_padding(table: &mut Table, config: &TableConfig) {
+    let padding_value = config.padding as u16;
+    let col_count = table.column_count();
+
+    for col_idx in 0..col_count {
+        if let Some(column) = table.column_mut(col_idx) {
+            column.set_padding((padding_value, padding_value));
+        }
+    }
 }
 
 #[cfg(test)]
