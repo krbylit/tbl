@@ -69,28 +69,28 @@
 
 ### Implementation for User Story 1
 
-- [ ] T022 [US1] Implement classify_json_format function in src/json_parser.rs to detect ArrayOfObjects variant
-- [ ] T023 [US1] Implement collect_column_headers function in src/json_parser.rs using ColumnIndex for first-occurrence order
-- [ ] T024 [US1] Implement convert_array_of_objects_to_table function in src/json_parser.rs
-- [ ] T025 [US1] Add depth limit validation to array parsing in src/json_parser.rs
-- [ ] T026 [US1] Add main parse_json_to_table function in src/json_parser.rs for array of objects path
-- [ ] T027 [US1] Update src/main.rs to add --json flag to CLI arguments
-- [ ] T028 [US1] Update src/main.rs to implement format auto-detection using FormatDetector
-- [ ] T029 [US1] Update src/main.rs to call parse_json_to_table when JSON format detected
-- [ ] T030 [US1] Verify all unit tests for US1 pass (T013-T021)
+- [x] T022 [US1] Implement classify_json_format function in src/json_parser.rs to detect ArrayOfObjects variant
+- [x] T023 [US1] Implement collect_column_headers function in src/json_parser.rs using ColumnIndex for first-occurrence order
+- [x] T024 [US1] Implement convert_array_of_objects_to_table function in src/json_parser.rs
+- [x] T025 [US1] Add depth limit validation to array parsing in src/json_parser.rs
+- [x] T026 [US1] Add main parse_json_to_table function in src/json_parser.rs for array of objects path
+- [x] T027 [US1] Update src/main.rs to add --json flag to CLI arguments
+- [x] T028 [US1] Update src/main.rs to implement format auto-detection using FormatDetector
+- [x] T029 [US1] Update src/main.rs to call parse_json_to_table when JSON format detected
+- [x] T030 [US1] Verify all unit tests for US1 pass (T013-T021)
 
 ### Integration Tests for User Story 1
 
-- [ ] T031 [P] [US1] Create tests/integration/json_tests.rs test file
-- [ ] T032 [P] [US1] Write test_json_array_from_file in tests/integration/json_tests.rs
-- [ ] T033 [P] [US1] Write test_json_array_from_stdin in tests/integration/json_tests.rs
-- [ ] T034 [P] [US1] Write test_json_flag_explicit in tests/integration/json_tests.rs
-- [ ] T035 [P] [US1] Write test_auto_detection_json in tests/integration/json_tests.rs
-- [ ] T036 [P] [US1] Write test_styling_works_with_json in tests/integration/json_tests.rs
-- [ ] T037 [P] [US1] Write test_conditional_formatting_with_json in tests/integration/json_tests.rs
-- [ ] T038 [US1] Verify all integration tests for US1 pass (T032-T037)
+- [x] T031 [P] [US1] Create tests/integration/json_tests.rs test file
+- [x] T032 [P] [US1] Write test_json_array_from_file in tests/integration/json_tests.rs
+- [x] T033 [P] [US1] Write test_json_array_from_stdin in tests/integration/json_tests.rs
+- [x] T034 [P] [US1] Write test_json_flag_explicit in tests/integration/json_tests.rs
+- [x] T035 [P] [US1] Write test_auto_detection_json in tests/integration/json_tests.rs
+- [x] T036 [P] [US1] Write test_styling_works_with_json in tests/integration/json_tests.rs
+- [x] T037 [P] [US1] Write test_conditional_formatting_with_json in tests/integration/json_tests.rs
+- [x] T038 [US1] Verify all integration tests for US1 pass (T032-T037)
 
-**Checkpoint**: At this point, User Story 1 (array of objects) should be fully functional and testable independently. MVP complete!
+**Checkpoint**: ✅ User Story 1 (array of objects) is fully functional and testable independently. MVP complete!
 
 ---
 
