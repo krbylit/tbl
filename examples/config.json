@@ -1,7 +1,0 @@
-{
-  "host": "localhost",
-  "port": 8080,
-  "debug": true,
-  "max_connections": 100,
-  "timeout_ms": 5000
-}

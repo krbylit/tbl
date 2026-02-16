@@ -18,10 +18,3 @@
 # Test artifacts
 test.csv
 *.tmp
-
-# Environment and secrets
-.env*
-*.log
-
-# Profiling
-*.prof*

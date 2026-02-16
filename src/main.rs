@@ -5,7 +5,7 @@ use std::io;
 use std::path::PathBuf;
 
 use tbl::{
-    parse_csv, parse_json_to_table, parse_utils::{parse_targets, parse_cell_targets, parse_condition, CellTarget, Condition}, parse_with_depth_limit, read_input, render_table, Alignment, FormatDetector, InputFormat, ParserConfig, TableColor, TableConfig,
+    parse_csv, parse_utils::{parse_targets, parse_cell_targets, parse_condition, CellTarget, Condition}, read_input, render_table, Alignment, ParserConfig, TableColor, TableConfig,
     TableStyle,
 };
 use tbl::table::ConditionalFormat;
@@ -34,12 +34,8 @@ struct Cli {
     input: Option<PathBuf>,
 
     // INPUT FORMAT OPTIONS
-    /// Force JSON format (auto-detected by default)
-    #[arg(long)]
-    json: bool,
-
     /// Force CSV format (comma-separated, this is the default)
-    #[arg(long, conflicts_with = "json")]
+    #[arg(long)]
     csv: bool,
 
     /// Custom delimiter character
@@ -784,43 +780,21 @@ fn main() -> Result<()> {
     // Read input from file or stdin
     let input = read_input(cli.input)?;
 
-    // Detect input format (JSON vs CSV)
-    let input_format = if cli.json {
-        InputFormat::Json
-    } else if cli.csv {
-        InputFormat::Csv
-    } else {
-        // Auto-detect based on content
-        FormatDetector::detect(&input)
+    // Configure parser
+    let parser_config = ParserConfig {
+        delimiter: cli.delimiter,
+        has_header: if cli.header {
+            Some(true)
+        } else if cli.no_header {
+            Some(false)
+        } else {
+            None // Auto-detect
+        },
+        trim_whitespace: !cli.no_trim,
     };
 
-    // Parse based on detected format
-    let table_data = match input_format {
-        InputFormat::Json => {
-            let value = parse_with_depth_limit(&input)?;
-            let json_table = parse_json_to_table(value)?;
-            // Convert JSON TableData to CSV TableData (headers always present for JSON)
-            tbl::TableData {
-                headers: Some(json_table.headers),
-                rows: json_table.rows,
-            }
-        }
-        InputFormat::Csv => {
-            // Configure CSV parser
-            let parser_config = ParserConfig {
-                delimiter: cli.delimiter,
-                has_header: if cli.header {
-                    Some(true)
-                } else if cli.no_header {
-                    Some(false)
-                } else {
-                    None // Auto-detect
-                },
-                trim_whitespace: !cli.no_trim,
-            };
-            parse_csv(&input, &parser_config)?
-        }
-    };
+    // Parse CSV
+    let table_data = parse_csv(&input, &parser_config)?;
 
     // Build column alignments vector from CLI args
     let mut column_alignments: Vec<Option<Alignment>> = Vec::new();
